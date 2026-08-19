@@ -1,0 +1,11 @@
+fastapi==0.141.1
+uvicorn==0.52.3
+dspy==3.3.0
+groq==1.6.0
+sentence-transformers
+pymupdf==1.28.2
+numpy==2.5.2
+scikit-learn==1.9.0
+python-dotenv==1.2.2
+mcp==2.0.0
+mlflow==3.15.1

@@ -1,0 +1,150 @@
+{
+    "total_questions": 8,
+    "average_keyword_score": 83.33,
+    "retrieval_accuracy": 100.0,
+    "results": [
+        {
+            "question": "Where does Aman currently work?",
+            "expected_answer": "Aman currently works at NEXLINE PHARMA PVT. LTD.",
+            "generated_answer": "Aman currently works at NEXLINE PHARMA PVT. LTD.",
+            "keyword_score": 50.0,
+            "matched_keywords": [
+                "nexline pharma"
+            ],
+            "missing_keywords": [
+                "associate"
+            ],
+            "retrieval_success": true,
+            "retrieved_sections": [
+                "PROFESSIONAL EXPERIENCE",
+                "HEADER",
+                "CERTIFICATIONS"
+            ]
+        },
+        {
+            "question": "What is Aman's current designation?",
+            "expected_answer": "Aman currently works as an Associate.",
+            "generated_answer": "Associate",
+            "keyword_score": 100.0,
+            "matched_keywords": [
+                "associate"
+            ],
+            "missing_keywords": [],
+            "retrieval_success": true,
+            "retrieved_sections": [
+                "HEADER",
+                "CERTIFICATIONS",
+                "PROFESSIONAL EXPERIENCE"
+            ]
+        },
+        {
+            "question": "What programming language does Aman use?",
+            "expected_answer": "Aman uses Python.",
+            "generated_answer": "Python",
+            "keyword_score": 100.0,
+            "matched_keywords": [
+                "python"
+            ],
+            "missing_keywords": [],
+            "retrieval_success": true,
+            "retrieved_sections": [
+                "TECHNICAL SKILLS",
+                "HEADER",
+                "CERTIFICATIONS"
+            ]
+        },
+        {
+            "question": "What database technologies does Aman know?",
+            "expected_answer": "Aman has experience with MySQL, PostgreSQL, Azure SQL and BigQuery.",
+            "generated_answer": "SQL, MySQL, PostgreSQL, Azure SQL, BigQuery",
+            "keyword_score": 100.0,
+            "matched_keywords": [
+                "mysql",
+                "postgresql",
+                "azure sql",
+                "bigquery"
+            ],
+            "missing_keywords": [],
+            "retrieval_success": true,
+            "retrieved_sections": [
+                "TECHNICAL SKILLS",
+                "HEADER",
+                "PROFESSIONAL SUMMARY"
+            ]
+        },
+        {
+            "question": "What BI tool does Aman use?",
+            "expected_answer": "Aman uses Power BI.",
+            "generated_answer": "Aman uses Power BI as a primary BI tool for building dashboards and visualizing data.",
+            "keyword_score": 50.0,
+            "matched_keywords": [
+                "power bi"
+            ],
+            "missing_keywords": [
+                "dax"
+            ],
+            "retrieval_success": true,
+            "retrieved_sections": [
+                "TECHNICAL SKILLS",
+                "PROJECTS",
+                "HEADER"
+            ]
+        },
+        {
+            "question": "What projects has Aman worked on?",
+            "expected_answer": "Aman has worked on healthcare, automobile, SQL customer behavior, and Resume Reader AI projects.",
+            "generated_answer": "Aman has worked on the following projects:\n1. **Healthcare Cost & Insurance Analytics Dashboard** – Developed SQL queries and Python data cleaning to analyze 10,000+ patient records, and built a 4‑page Power BI dashboard with KPI measures.  \n2. **Automobile Sales & Service Analytics Dashboard** – Processed automobile sales data using SQL and built interactive Power BI visualizations of sales KPIs.  \n3. **SQL Customer Behaviors Analysis** – Utilized SQL joins and aggregations to study purchase frequency, revenue distribution, and customer segmentation.  \n4. **Resume Reader AI Chatbot** – Created a RAG‑based chatbot in Streamlit that extracts, chunks, embeds, and retrieves resume information to answer user queries.  \n5. **Resume Intelligence AI Agent (in progress)** – Designing a production‑grade AI agent with RAG, MCP, DSPy, FastAPI, MLflow, Docker, and cloud deployment for resume and job‑description analysis, skill matching, and recommendation generation.",
+            "keyword_score": 100.0,
+            "matched_keywords": [
+                "healthcare",
+                "automobile",
+                "sql",
+                "resume reader"
+            ],
+            "missing_keywords": [],
+            "retrieval_success": true,
+            "retrieved_sections": [
+                "PROJECTS",
+                "HEADER",
+                "TECHNICAL SKILLS"
+            ]
+        },
+        {
+            "question": "What was the healthcare analytics project about?",
+            "expected_answer": "The healthcare project focused on healthcare cost and insurance analytics.",
+            "generated_answer": "The healthcare analytics project involved analyzing over 10,000 patient records to identify cost drivers, claim patterns, and insurer performance. Using SQL (MySQL) and Python (Pandas) for data extraction and cleaning, the work uncovered key insights such as Cardiac and Oncology patients contributing 38% of total costs and a higher rejection rate (24.3%) for Insurer D compared to the industry average (14.1%). A 4‑page interactive Power BI dashboard was built to track claim approval rates, average treatment costs, and regional KPIs, with additional Excel Pivot Tables and SUMIFS for cost recovery modeling and flagging high out‑of‑pocket patients.",
+            "keyword_score": 66.67,
+            "matched_keywords": [
+                "healthcare",
+                "cost"
+            ],
+            "missing_keywords": [
+                "insurance"
+            ],
+            "retrieval_success": true,
+            "retrieved_sections": [
+                "PROJECTS",
+                "PROFESSIONAL SUMMARY",
+                "TECHNICAL SKILLS"
+            ]
+        },
+        {
+            "question": "What certifications does Aman have?",
+            "expected_answer": "Aman has certifications including Power BI, Deloitte Data Analytics Virtual Internship, Data Analytics Essentials, Introduction to Data Science, and Python Essentials.",
+            "generated_answer": "Aman holds the following certifications:\n- Power BI Certification – TuteDude  \n- Deloitte Data Analytics Virtual Internship Certificate – Forage  \n- Data Analytics Essentials – Cisco Networking Academy  \n- Introduction to Data Science – Cisco Networking Academy  \n- Python Essentials – Cisco Networking Academy",
+            "keyword_score": 100.0,
+            "matched_keywords": [
+                "power bi",
+                "deloitte",
+                "python essentials"
+            ],
+            "missing_keywords": [],
+            "retrieval_success": true,
+            "retrieved_sections": [
+                "CERTIFICATIONS",
+                "HEADER",
+                "EDUCATION"
+            ]
+        }
+    ]
+}

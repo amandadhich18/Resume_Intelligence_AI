@@ -1,0 +1,78 @@
+[
+    {
+        "question": "Where does Aman currently work?",
+        "expected_answer": "Aman currently works at NEXLINE PHARMA PVT. LTD.",
+        "expected_section": "PROFESSIONAL EXPERIENCE",
+        "keywords": [
+            "nexline pharma",
+            "associate"
+        ]
+    },
+    {
+        "question": "What is Aman's current designation?",
+        "expected_answer": "Aman currently works as an Associate.",
+        "expected_section": "PROFESSIONAL EXPERIENCE",
+        "keywords": [
+            "associate"
+        ]
+    },
+    {
+        "question": "What programming language does Aman use?",
+        "expected_answer": "Aman uses Python.",
+        "expected_section": "TECHNICAL SKILLS",
+        "keywords": [
+            "python"
+        ]
+    },
+    {
+        "question": "What database technologies does Aman know?",
+        "expected_answer": "Aman has experience with MySQL, PostgreSQL, Azure SQL and BigQuery.",
+        "expected_section": "TECHNICAL SKILLS",
+        "keywords": [
+            "mysql",
+            "postgresql",
+            "azure sql",
+            "bigquery"
+        ]
+    },
+    {
+        "question": "What BI tool does Aman use?",
+        "expected_answer": "Aman uses Power BI.",
+        "expected_section": "TECHNICAL SKILLS",
+        "keywords": [
+            "power bi",
+            "dax"
+        ]
+    },
+    {
+        "question": "What projects has Aman worked on?",
+        "expected_answer": "Aman has worked on healthcare, automobile, SQL customer behavior, and Resume Reader AI projects.",
+        "expected_section": "PROJECTS",
+        "keywords": [
+            "healthcare",
+            "automobile",
+            "sql",
+            "resume reader"
+        ]
+    },
+    {
+        "question": "What was the healthcare analytics project about?",
+        "expected_answer": "The healthcare project focused on healthcare cost and insurance analytics.",
+        "expected_section": "PROJECTS",
+        "keywords": [
+            "healthcare",
+            "insurance",
+            "cost"
+        ]
+    },
+    {
+        "question": "What certifications does Aman have?",
+        "expected_answer": "Aman has certifications including Power BI, Deloitte Data Analytics Virtual Internship, Data Analytics Essentials, Introduction to Data Science, and Python Essentials.",
+        "expected_section": "CERTIFICATIONS",
+        "keywords": [
+            "power bi",
+            "deloitte",
+            "python essentials"
+        ]
+    }
+]
