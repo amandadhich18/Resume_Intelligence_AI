@@ -7,13 +7,30 @@ MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
 
 def load_embedding_model():
     """
-    Load the FastEmbed embedding model.
+    Load a lightweight ONNX embedding model.
     """
     model = TextEmbedding(
         model_name=MODEL_NAME
     )
 
     return model
+
+
+def _normalize(vector):
+    """
+    L2 normalize a vector.
+    """
+    vector = np.asarray(
+        vector,
+        dtype=np.float32
+    )
+
+    norm = np.linalg.norm(vector)
+
+    if norm == 0:
+        return vector
+
+    return vector / norm
 
 
 def generate_embeddings(model, texts):
@@ -24,20 +41,23 @@ def generate_embeddings(model, texts):
         model.embed(texts)
     )
 
-    embeddings = np.array(
-        embeddings,
+    embeddings = np.asarray(
+        [
+            _normalize(vector)
+            for vector in embeddings
+        ],
         dtype=np.float32
     )
 
-    # Normalize embeddings
-    norms = np.linalg.norm(
-        embeddings,
-        axis=1,
-        keepdims=True
+    return embeddings
+
+
+def generate_query_embedding(model, query):
+    """
+    Generate one normalized query embedding.
+    """
+    embedding = next(
+        model.query_embed(query)
     )
 
-    norms[norms == 0] = 1.0
-
-    embeddings = embeddings / norms
-
-    return embeddings
+    return _normalize(embedding)
