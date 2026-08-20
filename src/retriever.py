@@ -1,6 +1,8 @@
 import numpy as np
 import re
 
+from src.embeddings import generate_query_embedding
+
 
 def _keyword_score(query, chunk):
     """
@@ -44,7 +46,6 @@ def _keyword_score(query, chunk):
         ):
             score += 1.0
 
-        # Individual keywords
         experience_keywords = [
             "work",
             "working",
@@ -235,11 +236,10 @@ def retrieve_chunks(
     # 1. Query embedding
     # ------------------------------------------
 
-    query_embedding = model.encode(
-        [query],
-        convert_to_numpy=True,
-        normalize_embeddings=True
-    )[0]
+    query_embedding = generate_query_embedding(
+        model,
+        query
+    )
 
     # ------------------------------------------
     # 2. Semantic similarity
@@ -267,8 +267,6 @@ def retrieve_chunks(
             chunk
         )
 
-        # Semantic similarity remains important,
-        # but section matching gets a strong boost.
         final_score = (
             semantic_score
             + keyword_score
