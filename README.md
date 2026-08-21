@@ -74,21 +74,33 @@ The AI analysis generates:
 
 ---
 
-## 🖼️ Application Screenshots
 
-### 🏠 Resume Intelligence Dashboard
+## 📸 Application Screenshots
 
-![Resume Intelligence Dashboard](screenshots/dashboard.png)
+### 💬 Chat with the Resume
 
-### 💬 AI Resume Question Answering
+Upload a resume and ask questions about the candidate using the AI-powered Resume RAG system.
 
-![Resume Q&A](screenshots/resume-chat.png)
-
-### 🎯 Resume ↔ Job Description Analysis
-
-![Job Description Analysis](screenshots/jd-analysis.png)
+![Resume Chat](screenshots/resume-chat.png)
 
 ---
+
+### 🎯 Resume ↔ Job Description Matching
+
+Compare the uploaded resume against a Job Description to identify matched skills, missing skills, and overall compatibility.
+
+![Job Description Match](screenshots/job-description-match.png)
+
+---
+
+### 🤖 AI Candidate Analysis
+
+Generate detailed AI-powered candidate analysis including strengths, skill gaps, resume improvement suggestions, interview preparation topics, and final recommendations.
+
+![AI Candidate Analysis](screenshots/ai-candidate-analysis.png)
+
+---
+
 
 ## 🧠 System Architecture
 
