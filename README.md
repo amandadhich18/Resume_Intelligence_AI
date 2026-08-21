@@ -73,7 +73,6 @@ The AI analysis generates:
 6. **Final Recommendation**
 
 ---
----
 
 ## 🖼️ Application Screenshots
 
