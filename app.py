@@ -46,50 +46,42 @@ if "uploaded_jd_key" not in st.session_state:
 # ============================================================
 
 def show_sources(sources):
+    """
+    Display retrieved resume chunks used by the RAG pipeline.
+    """
 
     if not sources:
         return
 
-    with st.expander(
-        "🔎 View Retrieved Sources"
-    ):
+    with st.expander("🔎 View Retrieved Sources"):
 
-        for index, source in enumerate(
-            sources,
-            start=1
-        ):
+        for index, source in enumerate(sources, start=1):
 
             st.markdown(
                 f"### Source {index}: "
                 f"{source.get('section', 'Unknown')}"
             )
 
-            source_name = source.get(
-                "source"
-            )
+            source_name = source.get("source")
 
             if source_name:
-
                 st.caption(
                     f"Resume: {source_name}"
                 )
 
             if "score" in source:
-
                 st.caption(
                     f"Overall Score: "
                     f"{source['score']:.4f}"
                 )
 
             if "semantic_score" in source:
-
                 st.caption(
                     f"Semantic Score: "
                     f"{source['semantic_score']:.4f}"
                 )
 
             if "keyword_score" in source:
-
                 st.caption(
                     f"Keyword Score: "
                     f"{source['keyword_score']:.4f}"
@@ -106,8 +98,34 @@ def show_sources(sources):
 
 
 def format_skill(skill):
+    """
+    Format skill names for UI display.
+    """
 
     return skill.title()
+
+
+def clean_pdf_filename(filename):
+    """
+    Ensure a PDF filename contains only one .pdf extension.
+
+    Examples:
+    resume.pdf.pdf -> resume.pdf
+    resume.pdf     -> resume.pdf
+    """
+
+    if not filename:
+        return "resume.pdf"
+
+    filename = filename.strip()
+
+    while filename.lower().endswith(".pdf.pdf"):
+        filename = filename[:-4]
+
+    if not filename.lower().endswith(".pdf"):
+        filename += ".pdf"
+
+    return filename
 
 
 # ============================================================
@@ -116,9 +134,7 @@ def format_skill(skill):
 
 with st.sidebar:
 
-    st.title(
-        "📄 Resume Intelligence AI"
-    )
+    st.title("📄 Resume Intelligence AI")
 
     st.caption(
         "Upload a resume, chat with it, "
@@ -132,9 +148,7 @@ with st.sidebar:
     # API STATUS
     # --------------------------------------------------------
 
-    st.subheader(
-        "🔌 API Status"
-    )
+    st.subheader("🔌 API Status")
 
     if st.button(
         "Check API",
@@ -152,19 +166,16 @@ with st.sidebar:
 
             health = response.json()
 
-            if health.get(
-                "model_ready"
-            ):
+            if health.get("model_ready"):
 
-                st.success(
-                    "🟢 API Online"
-                )
+                st.success("🟢 API Online")
 
-                active = health.get(
-                    "active_resume"
-                )
+                active = health.get("active_resume")
 
                 if active:
+
+                    # Clean old duplicate extension for display
+                    active = clean_pdf_filename(active)
 
                     st.caption(
                         f"Active resume: {active}"
@@ -172,15 +183,11 @@ with st.sidebar:
 
             else:
 
-                st.warning(
-                    "🟡 API Starting"
-                )
+                st.warning("🟡 API Starting")
 
         except Exception:
 
-            st.error(
-                "🔴 API Offline"
-            )
+            st.error("🔴 API Offline")
 
     st.divider()
 
@@ -188,9 +195,7 @@ with st.sidebar:
     # RESUME UPLOAD
     # --------------------------------------------------------
 
-    st.subheader(
-        "📂 Upload Resume"
-    )
+    st.subheader("📂 Upload Resume")
 
     resume_file = st.file_uploader(
         "Choose a Resume PDF",
@@ -200,8 +205,13 @@ with st.sidebar:
 
     if resume_file is not None:
 
+        # Clean the filename before sending it to FastAPI.
+        safe_resume_name = clean_pdf_filename(
+            resume_file.name
+        )
+
         resume_key = (
-            resume_file.name,
+            safe_resume_name,
             resume_file.size
         )
 
@@ -220,7 +230,7 @@ with st.sidebar:
                         f"{API_BASE_URL}/upload-resume",
                         files={
                             "file": (
-                                resume_file.name,
+                                safe_resume_name,
                                 resume_file.getvalue(),
                                 "application/pdf"
                             )
@@ -232,9 +242,15 @@ with st.sidebar:
 
                     result = response.json()
 
+                    returned_filename = result.get(
+                        "filename",
+                        safe_resume_name
+                    )
+
+                    # Clean filename returned by backend too.
                     st.session_state.active_resume = (
-                        result.get(
-                            "filename"
+                        clean_pdf_filename(
+                            returned_filename
                         )
                     )
 
@@ -242,7 +258,7 @@ with st.sidebar:
                         resume_key
                     )
 
-                    # New resume = new conversation/JD state
+                    # New resume = reset previous chat/JD state
                     st.session_state.messages = []
                     st.session_state.jd_result = None
                     st.session_state.uploaded_jd_key = None
@@ -263,9 +279,7 @@ with st.sidebar:
                         "Could not upload the resume."
                     )
 
-                    st.caption(
-                        str(exc)
-                    )
+                    st.caption(str(exc))
 
                 except Exception as exc:
 
@@ -273,9 +287,7 @@ with st.sidebar:
                         "Unexpected resume processing error."
                     )
 
-                    st.caption(
-                        str(exc)
-                    )
+                    st.caption(str(exc))
 
     if st.session_state.active_resume:
 
@@ -304,9 +316,7 @@ with st.sidebar:
 # HEADER
 # ============================================================
 
-st.title(
-    "📄 Resume Intelligence AI"
-)
+st.title("📄 Resume Intelligence AI")
 
 st.write(
     "Upload a resume, ask questions about the candidate, "
@@ -324,9 +334,7 @@ st.caption(
 # SYSTEM INFORMATION
 # ============================================================
 
-col1, col2, col3, col4 = st.columns(
-    4
-)
+col1, col2, col3, col4 = st.columns(4)
 
 with col1:
 
@@ -364,9 +372,7 @@ st.divider()
 # RESUME CHAT
 # ============================================================
 
-st.header(
-    "💬 Chat with the Resume"
-)
+st.header("💬 Chat with the Resume")
 
 if not st.session_state.active_resume:
 
@@ -429,17 +435,11 @@ if question:
         }
     )
 
-    with st.chat_message(
-        "user"
-    ):
+    with st.chat_message("user"):
 
-        st.markdown(
-            question
-        )
+        st.markdown(question)
 
-    with st.chat_message(
-        "assistant"
-    ):
+    with st.chat_message("assistant"):
 
         with st.spinner(
             "🤖 Analyzing the resume..."
@@ -469,13 +469,9 @@ if question:
                     []
                 )
 
-                st.markdown(
-                    answer
-                )
+                st.markdown(answer)
 
-                show_sources(
-                    sources
-                )
+                show_sources(sources)
 
                 st.session_state.messages.append(
                     {
@@ -498,9 +494,7 @@ if question:
                     "Intelligence API."
                 )
 
-                st.caption(
-                    str(exc)
-                )
+                st.caption(str(exc))
 
             except Exception as exc:
 
@@ -508,9 +502,7 @@ if question:
                     "An unexpected error occurred."
                 )
 
-                st.caption(
-                    str(exc)
-                )
+                st.caption(str(exc))
 
 
 # ============================================================
@@ -624,9 +616,7 @@ else:
                         "Job Description."
                     )
 
-                    st.caption(
-                        str(exc)
-                    )
+                    st.caption(str(exc))
 
                 except Exception as exc:
 
@@ -634,9 +624,7 @@ else:
                         "Unexpected JD analysis error."
                     )
 
-                    st.caption(
-                        str(exc)
-                    )
+                    st.caption(str(exc))
 
 
 # ============================================================
@@ -684,8 +672,8 @@ if result:
     # SUMMARY METRICS
     # --------------------------------------------------------
 
-    metric1, metric2, metric3, metric4 = st.columns(
-        4
+    metric1, metric2, metric3, metric4 = (
+        st.columns(4)
     )
 
     with metric1:
@@ -741,9 +729,7 @@ if result:
         "🧩 Skill Comparison"
     )
 
-    left, right = st.columns(
-        2
-    )
+    left, right = st.columns(2)
 
     with left:
 
@@ -823,9 +809,7 @@ if result:
         "🔍 View Detected Skills"
     ):
 
-        col_a, col_b = st.columns(
-            2
-        )
+        col_a, col_b = st.columns(2)
 
         with col_a:
 
@@ -843,6 +827,7 @@ if result:
                 st.write(
                     f"• {skill}"
                 )
+
 
         with col_b:
 
