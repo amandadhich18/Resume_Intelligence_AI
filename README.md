@@ -73,6 +73,23 @@ The AI analysis generates:
 6. **Final Recommendation**
 
 ---
+---
+
+## 🖼️ Application Screenshots
+
+### 🏠 Resume Intelligence Dashboard
+
+![Resume Intelligence Dashboard](screenshots/dashboard.png)
+
+### 💬 AI Resume Question Answering
+
+![Resume Q&A](screenshots/resume-chat.png)
+
+### 🎯 Resume ↔ Job Description Analysis
+
+![Job Description Analysis](screenshots/jd-analysis.png)
+
+---
 
 ## 🧠 System Architecture
 
