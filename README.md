@@ -5,6 +5,14 @@ An **AI-powered Resume Intelligence platform** that allows users to upload a res
 The application combines **FastAPI, Streamlit, FastEmbed, Hybrid RAG, Groq, Docker, and Render** to provide an end-to-end resume analysis experience.
 
 ---
+## 🌐 Live Demo
+
+🚀 **Try Resume Intelligence AI:**  
+https://resume-intelligence-ai-aman.streamlit.app/
+
+> The backend is hosted on Render. The first request may take a short time if the service is waking from an idle state.
+
+---
 
 ## 🚀 Features
 
