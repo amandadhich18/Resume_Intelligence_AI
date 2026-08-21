@@ -13,6 +13,14 @@ https://resume-intelligence-ai-aman.streamlit.app/
 > The backend is hosted on Render. The first request may take a short time if the service is waking from an idle state.
 
 ---
+![Python](https://img.shields.io/badge/Python-3.14-blue)
+![FastAPI](https://img.shields.io/badge/FastAPI-API-green)
+![Streamlit](https://img.shields.io/badge/Streamlit-Frontend-red)
+![FastEmbed](https://img.shields.io/badge/FastEmbed-Embeddings-orange)
+![RAG](https://img.shields.io/badge/RAG-Hybrid-purple)
+![Groq](https://img.shields.io/badge/Groq-LLM-black)
+![Docker](https://img.shields.io/badge/Docker-Container-blue)
+![Render](https://img.shields.io/badge/Render-Backend-purple)
 
 ## 🚀 Features
 
